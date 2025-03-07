@@ -1,6 +1,5 @@
 #include <iostream>
-#include "functions.cpp"
-#include <nlohmann/json.hpp>
+#include "functions.hpp"
 using namespace std;
 
 int main() {
