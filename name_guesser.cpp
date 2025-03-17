@@ -1,7 +1,9 @@
 #include <iostream>
 #include "functions.hpp"
 #include "functions.hpp"
+#include "variables.hpp"
 #include <nlohmann/json.hpp>
+#include <string>
 using namespace std;
 
 int main() {
@@ -9,4 +11,7 @@ int main() {
     cout << "If I win, I get to gloat about how superior I am. If you win... I guess I'll give you validation. You humans like that right?\n";
     cout << "Anyway, let's stop wasting time and see if I can catch you in a lie!\n";
     cout << "What is your name? ";
+    cin >> name; //user's name
+
+
 }
