@@ -1,7 +1,8 @@
 #include <iostream>
 #include "functions.hpp"
-#include "functions.hpp"
 #include "variables.hpp"
+#include <cstdlib>  // For rand() and srand()
+#include <ctime>    // For time()
 #include <string>
 using namespace std;
 
@@ -11,8 +12,9 @@ int main() {
     cout << "Anyway, let's stop wasting time and see if I can catch you in a lie!\n";
     cout << "What is your name? ";
     cin >> name; //user's name
-    cout << endl;
-    cout << "Ok, \"" << name << "\". Let's see if you're telling the truth.";
-    cout << endl; 
+    cout << "Ok, \"" << name << "\". Let's see if you're telling the truth.\n";
 
+    initialConfidence();
+
+    return 0;
 }
