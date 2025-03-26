@@ -13,6 +13,7 @@ int main() {
     cout << "What is your name? ";
     cin >> name; //user's name
     cout << "Ok, \"" << name << "\". Let's see if you're telling the truth.\n";
+    cout << endl;
 
     initialConfidence();
 
