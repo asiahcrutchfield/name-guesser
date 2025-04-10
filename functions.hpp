@@ -1,7 +1,15 @@
 #include <iostream>
+#include <string>
 #include <cstdlib>  // For rand() and srand()
 #include <ctime>    // For time()
 using namespace std;
+
+void roundOne(string name) {
+    string country;
+
+    cout << "What country are you from, " << name << "? ";
+    cin >> country;
+}
 
 void initialConfidence() {
     srand(time(0));
@@ -30,5 +38,4 @@ void initialConfidence() {
     } else {
         cout << "There's a " << confidence << "% chance that you're telling the truth. You're definitely lying! Either that or my sensors are broken. But I trust my sensors more than I trust you. 😈\n";
     };
-
 };

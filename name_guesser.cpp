@@ -1,6 +1,7 @@
 #include <iostream>
 #include "functions.hpp"
 #include "variables.hpp"
+#include "classes.hpp"
 #include <cstdlib>  // For rand() and srand()
 #include <ctime>    // For time()
 #include <string>
@@ -15,7 +16,7 @@ int main() {
     cout << "Ok, \"" << initialName << "\". Let's see if you're telling the truth.\n";
     cout << endl;
 
-    initialConfidence();
+    roundOne(initialName);
 
     return 0;
 }
