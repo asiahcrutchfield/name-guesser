@@ -2,4 +2,7 @@
 #include <string>
 using namespace std;
 
-string name;
+string initialName;
+string trueName;
+
+bool realOrFakeName = true;

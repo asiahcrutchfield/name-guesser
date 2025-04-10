@@ -3,7 +3,7 @@
 #include <ctime>    // For time()
 using namespace std;
 
-int initialConfidence() {
+void initialConfidence() {
     srand(time(0));
     int confidence = rand() % 101;
 
@@ -31,5 +31,4 @@ int initialConfidence() {
         cout << "There's a " << confidence << "% chance that you're telling the truth. You're definitely lying! Either that or my sensors are broken. But I trust my sensors more than I trust you. 😈\n";
     };
 
-    return confidence;
 };
