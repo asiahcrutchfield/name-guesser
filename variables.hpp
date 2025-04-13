@@ -4,6 +4,7 @@ using namespace std;
 
 string initialName;
 string trueName;
+string falseName;
 
 int score = 0;
 

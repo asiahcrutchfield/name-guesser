@@ -7,7 +7,7 @@ using namespace std;
 void roundOne(string name) {
     string country;
 
-    cout << "What country are you from, " << name << "? ";
+    cout << "What country are you from? ";
     cin >> country;
 }
 
