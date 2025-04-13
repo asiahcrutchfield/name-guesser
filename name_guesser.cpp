@@ -5,6 +5,7 @@
 #include <cstdlib>  // For rand() and srand()
 #include <ctime>    // For time()
 #include <string>
+#include <fstream>
 using namespace std;
 
 int main() {
@@ -14,9 +15,8 @@ int main() {
     cout << "What is your name? ";
     cin >> initialName; //user's name
     cout << "Ok, \"" << initialName << "\". Let's see if you're telling the truth.\n";
-    cout << endl;
 
-    roundOne(initialName);
+    initialConfidence(initialName);
 
     return 0;
 }

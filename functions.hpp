@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <vector>
 #include <cstdlib>  // For rand() and srand()
 #include <ctime>    // For time()
 using namespace std;
@@ -11,31 +13,35 @@ void roundOne(string name) {
     cin >> country;
 }
 
-void initialConfidence() {
+
+void initialConfidence(string name) {
     srand(time(0));
     int confidence = rand() % 101;
+    fstream commonNames;
+    vector<string> commonNamesList;
 
-    if (confidence >= 100) {
-        cout << "Somehow, my sensors are indicating that there is a " << confidence << "% chance that you're telling the truth. I must be malfunctioning because no human can be that honest.\n";
-    } else if (confidence >= 90) {
-        cout << "There's a " << confidence << "% chance that you're telling the truth. You must be the most honest person alive! Or are you just *really* good at lying? 🤔\n";
-    } else if (confidence >= 80) {
-        cout << "There's a " << confidence << "% chance that you're telling the truth. But let's test that.\n";
-    } else if (confidence >= 70) {
-        cout << "There's a " << confidence << "% chance that you're telling the truth. You're probably telling the truth... but I'll be keeping an eye on you. 👀\n";
-    } else if (confidence >= 60) {
-        cout << "There's a " << confidence << "% chance that you're telling the truth. I'm going to get to the bottom of this.\n";
-    } else if (confidence >= 50) {
-        cout << "There's a " << confidence << "% chance that you're telling the truth. This could go either way. I wouldn't trust you with my bank password. 😂\n";
-    } else if (confidence >= 40) {
-        cout << "There's a " << confidence << "% chance that you're telling the truth. Let's see if you can outsmart me.\n";
-    } else if (confidence >= 30) {
-        cout << "There's a " << confidence << "% chance that you're telling the truth. Suspicious... very suspicious. Are you a spy? 🕵️‍♂️\n";
-    } else if (confidence >= 20) {
-        cout << "There's a " << confidence << "% chance that you're telling the truth. It's always funny when humans think they're smarter than us.\n";
-    } else if (confidence >= 10) {
-        cout << "There's a " << confidence << "% chance that you're telling the truth. You are definitely not beating any stereotypes computers have about humans.\n";
+    commonNames.open("common_names.txt", ios::in); // reads from common_names.txt
+    if (commonNames.is_open()) {
+        string list;
+        while (getline(commonNames, list)) {
+            commonNamesList.push_back(list);
+        }
     } else {
-        cout << "There's a " << confidence << "% chance that you're telling the truth. You're definitely lying! Either that or my sensors are broken. But I trust my sensors more than I trust you. 😈\n";
-    };
+        cout << "Error opening file";
+        return;
+    }
+
+    bool found = false;
+    for (int i = 0; i < commonNamesList.size(); i++) {
+        if (name == commonNamesList[i]) {
+            found = true;
+            break;
+        } 
+    }
+
+    if (found) {
+        cout << "That name seems to be pretty common, so you might be telling the truth.\n";
+    } else {
+        cout << "That's a strange name. I won't let you fool me.\n";
+    }
 };

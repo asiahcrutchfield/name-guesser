@@ -2,6 +2,10 @@
     "files.associations": {
         "chrono": "cpp",
         "system_error": "cpp",
-        "xlocale": "cpp"
+        "xlocale": "cpp",
+        "string": "cpp",
+        "filesystem": "cpp",
+        "xstring": "cpp",
+        "vector": "cpp"
     }
 }
