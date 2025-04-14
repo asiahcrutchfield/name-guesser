@@ -13,10 +13,9 @@ void roundOne(string name) {
     cin >> country;
 }
 
-
-void initialConfidence(string name) {
+int initialConfidence(string name) {
     srand(time(0));
-    int confidence = rand() % 101;
+    int confidence;
     fstream commonNames;
     vector<string> commonNamesList;
 
@@ -28,7 +27,7 @@ void initialConfidence(string name) {
         }
     } else {
         cout << "Error opening file";
-        return;
+        return -1;;
     }
 
     bool found = false;
@@ -41,7 +40,11 @@ void initialConfidence(string name) {
 
     if (found) {
         cout << "That name seems to be pretty common, so you might be telling the truth.\n";
+        confidence = 100;
+        return confidence;
     } else {
         cout << "That's a strange name. I won't let you fool me.\n";
+        confidence = 50;
+        return confidence;
     }
-};
+}
