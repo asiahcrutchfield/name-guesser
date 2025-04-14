@@ -1,3 +1,6 @@
+#ifndef FUNCTIONS_HPP
+#define FUNCTIONS_HPP
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -14,7 +17,6 @@ void roundOne(string name) {
 }
 
 int initialConfidence(string name) {
-    srand(time(0));
     int confidence;
     fstream commonNames;
     vector<string> commonNamesList;
@@ -27,7 +29,7 @@ int initialConfidence(string name) {
         }
     } else {
         cout << "Error opening file";
-        return -1;;
+        return -1;
     }
 
     bool found = false;
@@ -40,7 +42,8 @@ int initialConfidence(string name) {
 
     if (found) {
         cout << "That name seems to be pretty common, so you might be telling the truth.\n";
-        confidence = 80 + (rand() % 21);;
+        confidence = 80 + (rand() % 21);
+        cout << "Random confidence (should be 80–100): " << confidence << endl;
         return confidence;
     } else {
         cout << "That's a strange name. I won't let you fool me.\n";
@@ -48,3 +51,5 @@ int initialConfidence(string name) {
         return confidence;
     }
 }
+
+#endif
