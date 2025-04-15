@@ -9,15 +9,42 @@
 #include <ctime>    // For time()
 using namespace std;
 
-void roundOne(string name) {
+int roundOne(string name) {
+    int roundOneConfidence = 0;
     string country;
     fstream countries;
     vector<string> countriesList;
 
-    countries.open("countries.txt", ios::in); // reads from countries.txt
-
     cout << "What country are you from? ";
     cin >> country;
+    cout << endl;
+    countries.open("countries.txt", ios::in); // reads from countries.txt
+    if (countries.is_open()) {
+        string list;
+        while (getline(countries, list)) {
+            countriesList.push_back(list);
+        } 
+    } else {
+        cout << "Error opening file";
+        return -1;
+    }
+    countries.close();
+
+    bool found = false;
+    for (int i = 0; i < countriesList.size(); i++) {
+        if (country == countriesList[i]) {
+            found = true;
+            break;
+        }
+    }
+
+    if (found) {
+        roundOneConfidence += 2;
+    } else {
+        roundOneConfidence -= 5;
+    }
+
+    return roundOneConfidence;
 }
 
 void roundTwo(string name) {
@@ -47,6 +74,7 @@ int initialConfidence(string name) {
             break;
         } 
     }
+    commonNames.close();
 
     if (found) {
         cout << "That name seems to be pretty common, so you might be telling the truth.\n";
