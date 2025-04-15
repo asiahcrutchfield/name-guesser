@@ -11,9 +11,17 @@ using namespace std;
 
 void roundOne(string name) {
     string country;
+    fstream countries;
+    vector<string> countriesList;
+
+    countries.open("countries.txt", ios::in); // reads from countries.txt
 
     cout << "What country are you from? ";
     cin >> country;
+}
+
+void roundTwo(string name) {
+
 }
 
 int initialConfidence(string name) {
