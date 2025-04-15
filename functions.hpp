@@ -43,7 +43,6 @@ int initialConfidence(string name) {
     if (found) {
         cout << "That name seems to be pretty common, so you might be telling the truth.\n";
         confidence = 80 + (rand() % 21);
-        cout << "Random confidence (should be 80–100): " << confidence << endl;
         return confidence;
     } else {
         cout << "That's a strange name. I won't let you fool me.\n";

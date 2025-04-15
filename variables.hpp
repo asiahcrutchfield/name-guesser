@@ -7,6 +7,6 @@ string initialName;
 string trueName;
 string falseName;
 
-int initialScore;
+int initialScore = 0;
 
 bool realOrFakeName = true;

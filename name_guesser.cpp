@@ -20,8 +20,5 @@ int main() {
 
     initialScore = initialConfidence(initialName);
 
-    initialConfidence(initialName);
-    cout << initialScore;
-
     return 0;
 }
