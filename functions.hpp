@@ -88,4 +88,10 @@ int initialConfidence(string name) {
     }
 }
 
+void judgement(int first, int second, int third) {
+    int finalJudgement = 0;
+
+    
+}
+
 #endif
