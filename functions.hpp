@@ -15,6 +15,7 @@ int roundOne(string name) {
     fstream countries;
     vector<string> countriesList;
 
+    cout << "Ok, time to see how honest you are.\n";
     cout << "What country are you from? ";
     cin >> country;
     cout << endl;
