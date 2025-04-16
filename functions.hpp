@@ -82,6 +82,7 @@ int roundOne(string name) {
 
 int roundTwo(string name) {
     int roundTwoConfidence = 0;
+    string input;
     fstream celebrities;
     vector<string> celebritiesList;
     string user;
@@ -98,22 +99,38 @@ int roundTwo(string name) {
     }
     celebrities.close();
 
-    cout << "Is your name the same as a celebrity's? ";
-    cin >> user;
-    bool found = false;
-    for (int i = 0; i < celebritiesList.size(); i++) {
-        if (user == celebritiesList[i]) {
-            found = true;
-            break;
+    bool isCelebrity = false;
+    for (const string &celeb : celebritiesList) {
+        if (name == celeb) {
+            isCelebrity = true;
+            break; // no need to check further
         }
     }
 
-    if (found) {
-        roundTwoConfidence += 2;
-    } else {
-        roundTwoConfidence -= 5;
-    }
+    bool valid = false;
+    while (!valid) {
+        cout << "Is your name the same as a celebrity's? Y[1]/N[2] ";
+        getline(cin >> ws, user);  // clears whitespace and gets input
 
+        if (user == "1") {
+            valid = true;
+            if (isCelebrity) {
+                roundTwoConfidence += 2;
+            } else {
+                roundTwoConfidence -= 5;
+            }
+        } else if (user == "2") {
+            valid = true;
+            if (!isCelebrity) {
+                roundTwoConfidence += 1;
+            } else {
+                roundTwoConfidence -= 5;
+            }
+        } else {
+            cout << "Choose either 'yes'[1] or 'no'[2]. Try again.\n";
+        }
+    }
+        
     return roundTwoConfidence;
 }
 
@@ -180,11 +197,11 @@ int initialConfidence(string name) {
 
     if (found) {
         cout << "That name seems to be pretty common, so you might be telling the truth.\n";
-        confidence = 80 + (rand() % 21);
+        confidence = 60 + (rand() % 11);
         return confidence;
     } else {
         cout << "That's a strange name. I won't let you fool me.\n";
-        confidence = 30 + (rand() % 31);
+        confidence = 50 + (rand() % 11);
         return confidence;
     }
 }
