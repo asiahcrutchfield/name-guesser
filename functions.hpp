@@ -11,6 +11,7 @@ using namespace std;
 
 int roundOne(string name) {
     int roundOneConfidence = 0;
+    string input;
     string country;
     fstream countries;
     vector<string> countriesList;
@@ -48,39 +49,31 @@ int roundOne(string name) {
     bool valid = false;
     while (!valid) {
         cout << "Do people often mispronounce your name? Y[1]/N[2] ";
-        cin >> user;
+        getline(cin >> ws, input);  // use getline to safely capture all input
 
-        switch (user) {
-            case 1: 
-                roundOneConfidence += 1;
-                valid = true;
-                break;
-            case 2: 
-                roundOneConfidence += 2;
-                valid = true;
-                break;
-            default:
-                cout << "Choose either 'yes'[1] or 'no'[2]. Try again.\n";
-                break;
+        if (input == "1") {
+            roundOneConfidence += 2;
+            valid = true;
+        } else if (input == "2") {
+            roundOneConfidence += 1;
+            valid = true;
+        } else {
+            cout << "Choose either 'yes'[1] or 'no'[2]. Try again.\n";
         }
     }
 
     while (!valid) {
         cout << "Do you ever get confused for someone else? Y[1]/N[2] ";
-        cin >> user;
+        getline(cin >> ws, input);  // use getline to safely capture all input
 
-        switch (user) {
-            case 1: 
-                roundOneConfidence += 2;
-                valid = true;
-                break;
-            case 2: 
-                roundOneConfidence += 1;
-                valid = true;
-                break;
-            default:
-                cout << "Choose either 'yes'[1] or 'no'[2]. Try again.\n";
-                break;
+        if (input == "1") {
+            roundOneConfidence += 2;
+            valid = true;
+        } else if (input == "2") {
+            roundOneConfidence += 1;
+            valid = true;
+        } else {
+            cout << "Choose either 'yes'[1] or 'no'[2]. Try again.\n";
         }
     }
 
