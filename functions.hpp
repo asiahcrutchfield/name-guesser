@@ -45,6 +45,27 @@ int roundOne(string name) {
         roundOneConfidence -= 5;
     }
 
+    int user;
+    bool valid = false;
+    while (!valid) {
+        cout << "Do people often mispronounce your name? Y[1]/N[2] ";
+        cin >> user;
+
+        switch (user) {
+            case 1: 
+                roundOneConfidence += 1;
+                valid = true;
+                break;
+            case 2: 
+                roundOneConfidence += 2;
+                valid = true;
+                break;
+            default:
+                cout << "Choose either 'yes'[1] or 'no'[2]. Try again.\n";
+                break;
+        }
+    }
+
     return roundOneConfidence;
 }
 
