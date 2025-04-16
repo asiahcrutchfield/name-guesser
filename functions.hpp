@@ -97,18 +97,29 @@ int roundTwo(string name) {
     return roundTwoConfidence;
 }
 
+string getOrdinalSuffix(int num) {
+    if (num % 100 >= 11 && num % 100 <= 13) return "th";
+    switch (num % 10) {
+        case 1: return "st";
+        case 2: return "nd";
+        case 3: return "rd";
+        default: return "th";
+    }
+}
+
 int roundThree(string name) {
     int roundThreeConfidence = 0;
     vector<string> nameLetters;
     int randIndex = rand() % name.length();
-    string randomLetter = nameLetters[randIndex];
     string user;
 
     for (int i = 0; i < name.size(); i++) {
         nameLetters.push_back(string(1, name[i]));  // Convert char to string
     }
-    
-    cout << "What is the " << randIndex + 1 << " letter of your name? ";
+    string randomLetter = nameLetters[randIndex];
+    int position = randIndex + 1;
+
+    cout << "What is the " << position << getOrdinalSuffix(position) << " letter of your name? ";
     cin >> user;
 
     if (user == randomLetter) {
@@ -116,7 +127,6 @@ int roundThree(string name) {
     } else {
         roundThreeConfidence -= 5;
     }
-
 
     return roundThreeConfidence;
 }
