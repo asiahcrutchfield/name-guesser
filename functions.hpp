@@ -51,10 +51,10 @@ int roundOne(string name) {
         cout << "Do people often mispronounce your name? Y[1]/N[2] ";
         getline(cin >> ws, input);  // use getline to safely capture all input
 
-        if (input == "1") {
+        if (input == "1" || input == "y") {
             roundOneConfidence += 2;
             valid = true;
-        } else if (input == "2") {
+        } else if (input == "2" || input == "n") {
             roundOneConfidence += 1;
             valid = true;
         } else {
@@ -66,10 +66,10 @@ int roundOne(string name) {
         cout << "Do you ever get confused for someone else? Y[1]/N[2] ";
         getline(cin >> ws, input);  // use getline to safely capture all input
 
-        if (input == "1") {
+        if (input == "1" || input == "y") {
             roundOneConfidence += 2;
             valid = true;
-        } else if (input == "2") {
+        } else if (input == "2" || input == "n") {
             roundOneConfidence += 1;
             valid = true;
         } else {
@@ -112,14 +112,14 @@ int roundTwo(string name) {
         cout << "Is your name the same as a celebrity's? Y[1]/N[2] ";
         getline(cin >> ws, user);  // clears whitespace and gets input
 
-        if (user == "1") {
+        if (user == "1" || user == "y") {
             valid = true;
             if (isCelebrity) {
                 roundTwoConfidence += 2;
             } else {
                 roundTwoConfidence -= 5;
             }
-        } else if (user == "2") {
+        } else if (user == "2" || user == "n") {
             valid = true;
             if (!isCelebrity) {
                 roundTwoConfidence += 1;
@@ -159,7 +159,6 @@ int roundThree(string name) {
 
     cout << "What is the " << position << getOrdinalSuffix(position) << " letter of your name? ";
     cin >> user;
-    cout << endl;
 
     if (user == randomLetter) {
         roundThreeConfidence += 2;
