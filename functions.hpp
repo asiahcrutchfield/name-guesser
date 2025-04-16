@@ -17,7 +17,7 @@ int roundOne(string name) {
 
     cout << "Ok, time to see how honest you are.\n";
     cout << "What country are you from? ";
-    cin >> country;
+    getline(cin >> ws, country);  // The 'ws' eats any leftover whitespace/newline
     countries.open("countries.txt", ios::in); // reads from countries.txt
     if (countries.is_open()) {
         string list;
