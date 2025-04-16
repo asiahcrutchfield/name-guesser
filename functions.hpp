@@ -124,7 +124,7 @@ int roundTwo(string name) {
             if (!isCelebrity) {
                 roundTwoConfidence += 1;
             } else {
-                roundTwoConfidence -= 5;
+                roundTwoConfidence -= 3;
             }
         } else {
             cout << "Choose either 'yes'[1] or 'no'[2]. Try again.\n";
