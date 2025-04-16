@@ -18,7 +18,6 @@ int roundOne(string name) {
     cout << "Ok, time to see how honest you are.\n";
     cout << "What country are you from? ";
     cin >> country;
-    cout << endl;
     countries.open("countries.txt", ios::in); // reads from countries.txt
     if (countries.is_open()) {
         string list;
@@ -105,7 +104,7 @@ int roundTwo(string name) {
         return -1;
     }
     celebrities.close();
-    
+
     cout << "Is your name the same as a celebrity's? ";
     cin >> user;
     bool found = false;
@@ -136,6 +135,7 @@ string getOrdinalSuffix(int num) {
 }
 
 int roundThree(string name) {
+    srand(time(0));
     int roundThreeConfidence = 0;
     vector<string> nameLetters;
     int randIndex = rand() % name.length();
@@ -149,6 +149,7 @@ int roundThree(string name) {
 
     cout << "What is the " << position << getOrdinalSuffix(position) << " letter of your name? ";
     cin >> user;
+    cout << endl;
 
     if (user == randomLetter) {
         roundThreeConfidence += 2;

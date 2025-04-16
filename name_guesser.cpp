@@ -19,6 +19,9 @@ int main() {
     cout << "Ok, \"" << initialName << "\". Let's see if you're telling the truth.\n";
 
     initialScore = initialConfidence(initialName);
+    roundOneScore = roundOne(initialName);
+    roundTwoScore = roundTwo(initialName);
+    roundThreeScore = roundThree(initialName);
 
     return 0;
 }
