@@ -90,9 +90,37 @@ int roundOne(string name) {
 
 int roundTwo(string name) {
     int roundTwoConfidence = 0;
-    int letterPosition;
-    char randomLetter;
+    fstream celebrities;
+    vector<string> celebritiesList;
+    string user;
 
+    celebrities.open("celebrities.txt", ios::in);
+    if (celebrities.is_open()) {
+        string list;
+        while (getline(celebrities, list)) {
+            celebritiesList.push_back(list);
+        }
+    } else {
+        cout << "Error opening file";
+        return -1;
+    }
+    celebrities.close();
+    
+    cout << "Is your name the same as a celebrity's? ";
+    cin >> user;
+    bool found = false;
+    for (int i = 0; i < celebritiesList.size(); i++) {
+        if (user == celebritiesList[i]) {
+            found = true;
+            break;
+        }
+    }
+
+    if (found) {
+        roundTwoConfidence += 2;
+    } else {
+        roundTwoConfidence -= 5;
+    }
 
     return roundTwoConfidence;
 }
