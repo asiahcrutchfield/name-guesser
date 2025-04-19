@@ -205,10 +205,62 @@ int initialConfidence(string name) {
     }
 }
 
-void judgement(int first, int second, int third) {
+int judgement(int first, int second, int third) {
     int finalJudgement = 0;
+    int totalJudgement = first + second + third;
+    int maxJudgement = 100;
 
-    
+    if (totalJudgement > 100) {
+        cout << "I'm surprised by your honesty. I guess humans aren't all liars.\n";
+        finalJudgement += totalJudgement;
+        return finalJudgement;
+    } else if (totalJudgement >= 90) {
+        cout << "I'm " << totalJudgement << "% certain you're telling the truth.\n";
+        finalJudgement += totalJudgement;
+        return finalJudgement;
+    } else if (totalJudgement >= 80) {
+        cout << "I'm fairly sure I figured it out.\n";
+        finalJudgement += totalJudgement;
+        return finalJudgement;
+    } else if (totalJudgement >= 70) {
+        cout << "I'm currently analyzing your answers.\n";
+        finalJudgement += totalJudgement;
+        return finalJudgement;
+    } else if (totalJudgement >= 60) {
+        cout << "You're really working my circuits.\n";
+        finalJudgement += totalJudgement;
+        return finalJudgement;
+    } else if (totalJudgement >= 50) {
+        cout << "Even I'm not sure if you're lying.\n";
+        finalJudgement += totalJudgement;
+        return finalJudgement;
+    } else if (totalJudgement >= 40) {
+        cout << "You aren't fooling anyone.\n";
+        finalJudgement += totalJudgement;
+        return finalJudgement;
+    } else if (totalJudgement >= 30) {
+        cout << "You should learn to lie better.\n";
+        finalJudgement += totalJudgement;
+        return finalJudgement;
+    } else if (totalJudgement >= 20) {
+        cout << "That can't be your real name.\n";
+        finalJudgement += totalJudgement;
+        return finalJudgement;
+    } else if (totalJudgement >= 10) {
+        cout << "I caught you in a lie!\n";
+        finalJudgement += totalJudgement;
+        return finalJudgement;
+    } else if (totalJudgement > 0) {
+        cout << "You are almost certainly lying.\n";
+        finalJudgement += totalJudgement;
+        return finalJudgement;
+    } else if (totalJudgement <= 0) {
+        cout << "You surpassed my already low expectations.\n";
+        finalJudgement += totalJudgement;
+        return finalJudgement;
+    } 
+
+    return finalJudgement;   
 }
 
 #endif
