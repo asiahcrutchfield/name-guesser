@@ -9,6 +9,21 @@
 #include <ctime>    // For time()
 using namespace std;
 
+char myToLowerChar(char c) {
+    if (c >= 'A' && c <= 'Z') {
+        return c + 32;  // turns 'A' into 'a', 'B' into 'b', etc.
+    }
+    return c;  // if it's not uppercase, return it unchanged
+}
+
+string myToLowerString(const string &str) {
+    string lowered = "";
+    for (char c : str) {
+        lowered += myToLowerChar(c);  // <- this is the key line
+    }
+    return lowered;
+}
+
 int roundOne(string name) {
     int roundOneConfidence = 0;
     string input;
@@ -19,6 +34,7 @@ int roundOne(string name) {
     cout << "Ok, time to see how honest you are.\n";
     cout << "What country are you from? ";
     getline(cin >> ws, country);  // The 'ws' eats any leftover whitespace/newline
+    country = myToLowerString(country);
     countries.open("countries.txt", ios::in); // reads from countries.txt
     if (countries.is_open()) {
         string list;
@@ -27,12 +43,13 @@ int roundOne(string name) {
         } 
     } else {
         cout << "Error opening file";
-        return -1;
+        return -55;
     }
     countries.close();
 
     bool found = false;
     for (int i = 0; i < countriesList.size(); i++) {
+        countriesList[i] = myToLowerString(countriesList[i]); 
         if (country == countriesList[i]) {
             found = true;
             break;
@@ -62,16 +79,17 @@ int roundOne(string name) {
         }
     }
 
-    while (!valid) {
+    bool validTwo = false;
+    while (!validTwo) {
         cout << "Do you ever get confused for someone else? Y[1]/N[2] ";
         getline(cin >> ws, input);  // use getline to safely capture all input
 
         if (input == "1" || input == "y") {
             roundOneConfidence += 2;
-            valid = true;
+            validTwo = true;
         } else if (input == "2" || input == "n") {
             roundOneConfidence += 1;
-            valid = true;
+            validTwo = true;
         } else {
             cout << "Choose either 'yes'[1] or 'no'[2]. Try again.\n";
         }
@@ -145,7 +163,6 @@ string getOrdinalSuffix(int num) {
 }
 
 int roundThree(string name) {
-    srand(time(0));
     int roundThreeConfidence = 0;
     vector<string> nameLetters;
     int randIndex = rand() % name.length();
@@ -160,7 +177,7 @@ int roundThree(string name) {
     cout << "What is the " << position << getOrdinalSuffix(position) << " letter of your name? ";
     cin >> user;
 
-    if (user == randomLetter) {
+    if (myToLowerString(user) == myToLowerString(randomLetter)) {
         roundThreeConfidence += 2;
     } else {
         roundThreeConfidence -= 5;
@@ -181,13 +198,13 @@ int initialConfidence(string name) {
             commonNamesList.push_back(list);
         }
     } else {
-        cout << "Error opening file";
-        return -1;
+        cout << "Error opening common names file. Proceeding with default confidence.\n";
+        return 55;
     }
 
     bool found = false;
     for (int i = 0; i < commonNamesList.size(); i++) {
-        if (name == commonNamesList[i]) {
+        if (myToLowerString(name) == myToLowerString(commonNamesList[i])) {
             found = true;
             break;
         } 
@@ -205,12 +222,12 @@ int initialConfidence(string name) {
     }
 }
 
-int judgement(int first, int second, int third) {
+int judgement(int initial, int first, int second, int third) {
     int finalJudgement = 0;
-    int totalJudgement = first + second + third;
+    int totalJudgement = initial + first + second + third;
     int maxJudgement = 100;
 
-    if (totalJudgement > 100) {
+    if (totalJudgement > maxJudgement) {
         cout << "I'm surprised by your honesty. I guess humans aren't all liars.\n";
         finalJudgement += totalJudgement;
         return finalJudgement;

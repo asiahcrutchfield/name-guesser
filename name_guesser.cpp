@@ -23,5 +23,7 @@ int main() {
     roundTwoScore = roundTwo(initialName);
     roundThreeScore = roundThree(initialName);
 
+    judgement(initialScore, roundOneScore, roundTwoScore, roundThreeScore);
+
     return 0;
 }
